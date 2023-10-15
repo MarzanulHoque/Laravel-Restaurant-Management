@@ -24,9 +24,12 @@ Route::get('/delete_user/{id}', [AdminController::class, 'delete_user']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::get('/delete_food/{id}', [AdminController::class, 'delete_food']);
 Route::get('/update_view/{id}', [AdminController::class, 'update_view']);
+Route::get('/updatechef/{id}', [AdminController::class, 'updatechef']);
 Route::get('/reservation_list', [AdminController::class, 'reservation_list']);
 Route::get('/viewchef', [AdminController::class, 'viewchef']);
+Route::get('/delete_chef/{id}', [AdminController::class, 'delete_chef']);
 
+Route::post('/update_chef/{id}', [AdminController::class, 'update_chef']);
 Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
 Route::post('/update_food/{id}', [AdminController::class, 'update_food']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);

@@ -5,6 +5,19 @@
   <head>
     <!-- Required meta tags -->
     @include('admin.css')
+
+    <style>
+        .div_center{
+
+            text-align: center;
+            padding-top:10px;
+        }
+        .h2_font{
+            font-size: 40px;
+            padding-bottom: 10px;
+        }
+    </style>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -25,7 +38,7 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="row">
+
 
                 <center>
                     <h1 style="font-size: 40px ; margin-bottom:20px">Add Chef</h1>
@@ -55,10 +68,51 @@
 
                     </form>
 
+
+
                 </center>
+
+
+             <div class="div_center">
+                    <h2 class="h2_font">Chef List</h2>
             </div>
 
+            <div class="container">
+                    <table class="table table-striped table-dark">
+                            <thead>
+                                <tr align="center">
+                                    <th >Chef Name </th>
+                                    <th >Chef's Speciality</th>
+                                    <th >Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $item)
+                                <tr align="center">
+                                    <td> {{ $item->name }} </td>
+                                    <td> {{ $item->speciality }} </td>
+                                    <td> <img class="rounded" src="/chefimage/{{ $item->image }}" alt=""> </td>
+                                    <td>
+                                        <a href="{{ url('/updatechef',$item->id) }}" class="btn btn-inverse-primary">Update</a>
+                                        <a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('/delete_chef',$item->id) }}" class="btn btn-inverse-danger">Delete</a>
+                                    </td>
+
+                                </tr>
+                                @endforeach
+                            </tbody>
+                    </table>
+            </div>
+
+
+
           </div>
+
+
+
+
+
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
