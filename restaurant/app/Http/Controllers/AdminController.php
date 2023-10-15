@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Reserve;
+use App\Models\Foodchef;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -110,6 +112,32 @@ class AdminController extends Controller
     {
         $data = Reserve::all();
         return view('admin.reservation_list',compact('data'));
+    }
+
+    public function viewchef() {
+        return view('admin.adminchef');
+    }
+
+    public function uploadchef(Request $request)
+    {
+
+        $data = new Foodchef;
+
+        $data->name = $request->name;
+        $data->speciality = $request->speciality;
+
+        $image = $request->image;
+        $imagename = time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('chefimage',$imagename);
+
+        $data->image = $imagename;
+
+        $data->save();
+        return redirect()->back()->with('message','Chef Data Uploaded Successfully');
+
+
+
+
     }
 
 }

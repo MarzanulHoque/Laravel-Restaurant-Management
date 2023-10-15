@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="{{ url('/viewchef') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
