@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+    <base href="/public">
     @include('admin.css')
     <style>
         .div_center{
@@ -41,24 +42,29 @@
                 </div>
             <div style="position: relative; top:60px; right:-150px">
 
-                <form action="{{  url('/uploadfood')}}" method="post" enctype="multipart/form-data">
+                <form action="{{  url('/update_food',$food->id) }}" method="post" enctype="multipart/form-data">
                  @csrf
                     <div class="mt-4">
                         <label for="">Title</label>
-                        <input type="text" style="color: black"  name="title" id="" placeholder="Write a title" required>
+                        <input type="text" style="color: black"  name="title" id="" value="{{ $food->title }}" required>
                     </div>
                     <div class="mt-4">
                         <label for="">Price</label>
-                        <input type="number" style="color: black"  name="price" id="" placeholder="Give a Price" required>
+                        <input type="number" style="color: black"  name="price" id="" value="{{ $food->price }}" required>
                     </div>
                     <div class="mt-4">
                         <label for="">Description</label>
-                        <input type="text" style="color: black"  name="desc" id="" placeholder="Write a description" required>
+                        <input type="text" style="color: black"  name="desc" id="" value="{{ $food->description }}" required>
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="">Previous Image</label>
+                        <img style="height: 150px; width:150px" src="/foodimage/{{ $food->image }}" alt="">
                     </div>
 
                     <div class="mt-4">
                         <label for="">Image</label>
-                        <input type="file"  name="image" id="" placeholder="Upload an Image">
+                        <input type="file"  name="image" value="{{ $food->image }}">
                     </div>
 
                     <div class="mt-4">
@@ -71,40 +77,7 @@
             <br>
             <br>
 
-            <div class="div_center">
-                    <h2 class="h2_font">Food Menu</h2>
             </div>
-
-            <div class="container">
-                    <table class="table table-striped table-dark">
-                            <thead>
-                                <tr align="center">
-                                    <th >Food Name </th>
-                                    <th >Price</th>
-                                    <th >Description</th>
-                                    <th >Image</th>
-                                    <th> Action </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $item)
-                                <tr align="center">
-                                    <td> {{ $item->title }} </td>
-                                    <td> ${{ $item->price }} </td>
-                                    <td> {{ $item->description }} </td>
-                                    <td> <img class="rounded" src="/foodimage/{{ $item->image }}" alt=""> </td>
-                                    <td>
-                                        <a href="{{ url('/update_view',$item->id) }}" class="btn btn-inverse-primary">Update</a>
-                                        <a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('/delete_food',$item->id) }}" class="btn btn-inverse-danger">Delete</a>
-                                    </td>
-
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
-
-          </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
