@@ -7,6 +7,7 @@ use App\Models\Food;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
+
 {
     public function users()
     {
@@ -21,9 +22,19 @@ class AdminController extends Controller
         return redirect()->back()->with('message','User Deleted Successfully');
     }
 
+    public function delete_food($id)
+    {
+        $food = Food::find($id);
+        $food->delete();
+
+        return redirect()->back()->with('message','Food Deleted Successfully From The Menu');
+    }
+
     public function foodmenu()
     {
-        return view('admin.foodmenu');
+        $data = food::all();
+
+        return view('admin.foodmenu',compact('data'));
     }
 
     public function uploadfood(Request $request)

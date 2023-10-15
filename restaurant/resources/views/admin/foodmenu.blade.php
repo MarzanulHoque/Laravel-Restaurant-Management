@@ -3,6 +3,18 @@
   <head>
     <!-- Required meta tags -->
     @include('admin.css')
+    <style>
+        .div_center{
+
+            text-align: center;
+            padding-top:10px;
+        }
+        .h2_font{
+            font-size: 40px;
+            padding-bottom: 10px;
+        }
+    </style>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -24,6 +36,9 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="div_center">
+                    <h2 class="h2_font">Add Food Menu</h2>
+                </div>
             <div style="position: relative; top:60px; right:-150px">
 
                 <form action="{{  url('/uploadfood')}}" method="post" enctype="multipart/form-data">
@@ -52,6 +67,40 @@
 
                 </form>
             </div>
+            <br>
+            <br>
+            <br>
+
+            <div class="div_center">
+                    <h2 class="h2_font">Food Menu</h2>
+            </div>
+
+            <div class="container">
+                    <table class="table table-striped table-dark">
+                            <thead>
+                                <tr align="center">
+                                    <th >Food Name </th>
+                                    <th >Price</th>
+                                    <th >Description</th>
+                                    <th >Image</th>
+                                    <th> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $item)
+                                <tr align="center">
+                                    <td> {{ $item->title }} </td>
+                                    <td> ${{ $item->price }} </td>
+                                    <td> {{ $item->description }} </td>
+                                    <td> <img class="rounded" src="/foodimage/{{ $item->image }}" alt=""> </td>
+
+                                    <td><a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('/delete_food',$item->id) }}" class="btn btn-danger">Delete</a></td>
+
+                                </tr>
+                                @endforeach
+                            </tbody>
+                    </table>
+                </div>
 
           </div>
           <!-- content-wrapper ends -->
