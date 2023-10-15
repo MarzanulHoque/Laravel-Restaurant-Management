@@ -24,9 +24,11 @@ Route::get('/delete_user/{id}', [AdminController::class, 'delete_user']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::get('/delete_food/{id}', [AdminController::class, 'delete_food']);
 Route::get('/update_view/{id}', [AdminController::class, 'update_view']);
+Route::get('reservation_list', [AdminController::class, 'reservation_list']);
 
 Route::post('/update_food/{id}', [AdminController::class, 'update_food']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
+Route::post('/reservation', [AdminController::class, 'reservation']);
 
 Route::middleware([
     'auth:sanctum',

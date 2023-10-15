@@ -38,12 +38,12 @@
   <body>
     <div class="container-scroller">
 
-        @if (session()->has('message'))
+        {{-- @if (session()->has('message'))
 
             <script>alert( '{{ session()->get('message') }}' )
             </script>
 
-        @endif
+        @endif --}}
 
       <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
@@ -87,16 +87,20 @@
           <div class="content-wrapper">
 
             <div class="div_center">
-                    <h2 class="h2_font">All Users</h2>
+                    <h2 class="h2_font">All Reservation</h2>
                 </div>
 
                 <div class="container">
                     <table class="table table-striped table-dark">
                             <thead>
                                 <tr>
-                                    <th >Usename </th>
+                                    <th >Name </th>
                                     <th >Email</th>
-                                    <th >Action</th>
+                                    <th >Phone</th>
+                                    <th >Number of Guests</th>
+                                    <th >Date</th>
+                                    <th >Time</th>
+                                    <th >Message</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,12 +108,12 @@
                                 <tr>
                                     <td> {{ $item->name }} </td>
                                     <td> {{ $item->email }} </td>
-                                    @if ($item->usertype=='1')
-                                        <td class="btn btn-warning">Action Not Allowed</td>
-                                    @else
+                                    <td> {{ $item->phone }} </td>
+                                    <td> {{ $item->guest }} </td>
+                                    <td> {{ $item->date }} </td>
+                                    <td> {{ $item->time }} </td>
+                                    <td> {{ $item->message }} </td>
 
-                                    <td><a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('delete_user',$item->id) }}" class="btn btn-danger">Delete</a></td>
-                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Food;
+use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -85,4 +86,30 @@ class AdminController extends Controller
 
 
     }
+
+    public function reservation(Request $request)
+    {
+        $data = new Reserve;
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->guest = $request->guest;
+
+        $data->date = $request->date;
+        $data->time = $request->time;
+        $data->message = $request->message;
+
+        $data->save();
+
+        return redirect()->back()->with('message','Table Reserved Successfully');
+
+    }
+
+    public function reservation_list()
+    {
+        $data = Reserve::all();
+        return view('admin.reservation_list',compact('data'));
+    }
+
 }
