@@ -34,6 +34,7 @@ Route::post('/uploadchef', [AdminController::class, 'uploadchef']);
 Route::post('/update_food/{id}', [AdminController::class, 'update_food']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
 Route::post('/reservation', [AdminController::class, 'reservation']);
+Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
 
 Route::middleware([
     'auth:sanctum',
