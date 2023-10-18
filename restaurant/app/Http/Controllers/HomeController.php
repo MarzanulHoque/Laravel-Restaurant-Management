@@ -70,5 +70,14 @@ class HomeController extends Controller
 
     }
 
+    public function showcart($id)
+    {
+        $user_id = Auth::id();
+        $count = cart::where('user_id',$user_id)->count();
+        $data = cart::where('user_id',$user_id)->join('food','carts.food_id','=','food.id')->get();
+
+        return view('showcart',compact('count','data'));
+    }
+
 
 }
