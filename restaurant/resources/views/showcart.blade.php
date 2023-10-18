@@ -164,13 +164,17 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <td> ${{ $item->price }} </td>
                                     <td> {{ $item->quantity }} </td>
                                     <td> <img height="70" width="55" style="border-radius: 10px; " src="/foodimage/{{ $item->image }}" alt=""> </td>
-                                    <td>
-                                        <a href="{{ url('/update_view',$item->id) }}" class="btn btn-primary">Update</a>
-                                        <a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('/delete_food',$item->id) }}" class="btn btn-danger">Delete</a>
-                                    </td>
 
+                                    @endforeach
                                 </tr>
-                                @endforeach
+                                    @foreach ($data2 as $item2)
+
+                                        <td>
+                                            <a onclick="return confirm('Are You Sure To Delete This ?')" href=" {{ url('/remove_cart',$item2->id) }}" class="btn btn-danger">Remove</a>
+                                        </td>
+
+                                    @endforeach
+
                             </tbody>
                     </table>
             </div>
