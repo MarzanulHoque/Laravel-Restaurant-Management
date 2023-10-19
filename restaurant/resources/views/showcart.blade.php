@@ -28,6 +28,9 @@ https://templatemo.com/tm-558-klassy-cafe
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
 
      <style>
         .div_center{
@@ -179,10 +182,54 @@ https://templatemo.com/tm-558-klassy-cafe
                     </table>
             </div>
 
+            <div align="center" id="order" style="padding: 10px; margin-top:20px">
+                <button class="btn btn-primary"> Order Now! </button>
+            </div>
+
+            <div align="center" id="appear" style="padding:10px; display:none;">
+
+                <div style="padding: 10px">
+                    <label>Name</label>
+                    <input type="text" name="name" id="" placeholder="Name">
+                </div>
+
+                <div style="padding: 10px">
+                    <label>Phone</label>
+                    <input type="number" name="phone" id="" placeholder="Phone Number">
+                </div>
+
+                <div style="padding: 10px">
+                    <label>Address</label>
+                    <input type="text" name="address" id="" placeholder="Address">
+                </div>
+
+                <div style="padding: 10px" >
+                    <input class="btn btn-success" type="submit"  value="Confirm Order">
+                    <button class="btn btn-danger" id="close">X</button>
+                </div>
+
+            </div>
+
+            <div style="margin-bottom: 40px ">
+            </div>
+
           </div>
 
 
+    <script type="text/javascript">
 
+        $("#order").click(
+            function(){
+                $("#appear").show();
+            }
+        );
+
+        $("#close").click(
+            function(){
+                $("#appear").hide();
+            }
+        );
+    </script>
 
 
 
@@ -208,6 +255,9 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     <script>
+
+
+        $function
 
         $(function() {
             var selectedClass = "";
