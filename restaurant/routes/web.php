@@ -37,6 +37,7 @@ Route::post('/reservation', [AdminController::class, 'reservation']);
 Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
 Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
 Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
+Route::post('/confirmorder', [HomeController::class, 'confirmorder']);
 
 Route::middleware([
     'auth:sanctum',

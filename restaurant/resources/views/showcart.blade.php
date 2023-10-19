@@ -150,6 +150,8 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
 
             <div class="container">
+                <form action="{{ url('confirmorder') }}" method="POST">
+                    @csrf
                     <table class="table table-striped table-dark">
                             <thead>
                                 <tr align="center">
@@ -162,10 +164,23 @@ https://templatemo.com/tm-558-klassy-cafe
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
-                                <tr align="center">
-                                    <td> {{ $item->title }} </td>
-                                    <td> ${{ $item->price }} </td>
-                                    <td> {{ $item->quantity }} </td>
+                                <tr align="center" >
+
+                                    <td>
+                                        <input type="text" name="foodname[]" value="{{ $item->title }}" hidden="">
+                                        {{ $item->title }}
+                                    </td>
+
+                                    <td>
+                                        <input type="text" name="price[]" value="{{ $item->price }}" hidden="">
+                                        ${{ $item->price }}
+                                    </td>
+
+                                    <td>
+                                        <input type="text" name="quantity[]" value="{{ $item->quantity }}" hidden="">
+                                        {{ $item->quantity }}
+                                    </td>
+
                                     <td> <img height="70" width="55" style="border-radius: 10px; " src="/foodimage/{{ $item->image }}" alt=""> </td>
 
                                     @endforeach
@@ -183,32 +198,34 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
 
             <div align="center" id="order" style="padding: 10px; margin-top:20px">
-                <button class="btn btn-primary"> Order Now! </button>
+                <button class="btn btn-primary" type="button"> Order Now! </button>
             </div>
 
-            <div align="center" id="appear" style="padding:10px; display:none;">
+                    <div align="center" id="appear" style="padding:10px; display:none;">
 
-                <div style="padding: 10px">
-                    <label>Name</label>
-                    <input type="text" name="name" id="" placeholder="Name">
-                </div>
+                        <div style="padding: 10px">
+                            <label>Name</label>
+                            <input type="text" name="name" id="" placeholder="Name">
+                        </div>
 
-                <div style="padding: 10px">
-                    <label>Phone</label>
-                    <input type="number" name="phone" id="" placeholder="Phone Number">
-                </div>
+                        <div style="padding: 10px">
+                            <label>Phone</label>
+                            <input type="number" name="phone" id="" placeholder="Phone Number">
+                        </div>
 
-                <div style="padding: 10px">
-                    <label>Address</label>
-                    <input type="text" name="address" id="" placeholder="Address">
-                </div>
+                        <div style="padding: 10px">
+                            <label>Address</label>
+                            <input type="text" name="address" id="" placeholder="Address">
+                        </div>
 
-                <div style="padding: 10px" >
-                    <input class="btn btn-success" type="submit"  value="Confirm Order">
-                    <button class="btn btn-danger" id="close">X</button>
-                </div>
+                        <div style="padding: 10px" >
+                            <input class="btn btn-success" type="submit"  value="Confirm Order">
+                            <button class="btn btn-danger" type="button" id="close">X</button>
+                        </div>
 
-            </div>
+                    </div>
+                </form>
+
 
             <div style="margin-bottom: 40px ">
             </div>
