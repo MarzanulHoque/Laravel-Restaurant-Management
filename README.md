@@ -1,1 +1,1 @@
-# Laravel-LMS
+# Laravel-Restaurant-Management
